@@ -125,7 +125,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(0, 123, 255, 0.75), rgba(0, 123, 255, 0.75)), url('hero-mzolo-services-new.jpg') no-repeat center center/cover; /* New hero image */
+    background: linear-gradient(rgba(0, 123, 255, 0.75), rgba(0, 123, 255, 0.75)), url('hero-mzolo-services-new.jpg') no-repeat center center/cover;
     color: var(--light-text);
     text-align: center;
     padding: 150px 20px;
@@ -134,7 +134,7 @@ body {
     justify-content: center;
     min-height: 85vh;
     position: relative;
-    overflow: hidden; /* To contain pseudo-elements */
+    overflow: hidden;
 }
 
 .hero-section::before {
@@ -169,13 +169,10 @@ body {
     100% { transform: translate(0, 0); }
 }
 
-
 .hero-content {
     max-width: 900px;
-    z-index: 1; /* Ensure content is above pseudo-elements */
+    z-index: 1;
 }
-
-/* Logo removed: .site-logo { ... } */
 
 .hero-section h1 {
     font-family: var(--heading-font);
@@ -206,7 +203,7 @@ body {
     display: inline-block;
     padding: 16px 40px;
     text-decoration: none;
-    border-radius: 50px; /* More rounded buttons */
+    border-radius: 50px;
     font-weight: 600;
     font-size: 1.2rem;
     transition: all 0.3s ease;
@@ -269,7 +266,7 @@ body {
     margin-bottom: 60px;
     color: var(--dark-text);
     position: relative;
-    display: inline-block; /* To center the pseudo-element better */
+    display: inline-block;
     left: 50%;
     transform: translateX(-50%);
     padding-bottom: 20px;
@@ -309,23 +306,6 @@ body {
     line-height: 1.8;
     margin-bottom: 20px;
     color: var(--muted-text);
-}
-
-#about .about-image {
-    flex: 1;
-    min-width: 300px;
-    text-align: center;
-}
-
-#about .about-image img {
-    max-width: 100%;
-    border-radius: 15px;
-    box-shadow: var(--box-shadow-medium);
-    transition: transform 0.3s ease;
-}
-
-#about .about-image img:hover {
-    transform: scale(1.02);
 }
 
 /* Services Section */
@@ -414,7 +394,7 @@ body {
 
 /* Why Choose Us Section */
 #why-choose-us {
-    background-color: #e2f0ff; /* A very light blue */
+    background-color: #e2f0ff;
 }
 
 .features-grid {
@@ -454,9 +434,8 @@ body {
     font-size: 1rem;
 }
 
-/* Community Impact Section (Replaces Gallery) */
+/* Community Impact Section */
 #community-impact {
-    /* Uses .bg-light from general styles */
     text-align: center;
 }
 
@@ -488,7 +467,7 @@ body {
     text-align: center;
     box-shadow: var(--box-shadow-light);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 5px solid var(--secondary-color); /* Green border for impact */
+    border-bottom: 5px solid var(--secondary-color);
 }
 
 .impact-item:hover {
@@ -496,11 +475,11 @@ body {
     box-shadow: var(--box-shadow-medium);
 }
 
-.impact-item .small-circle { /* Smaller circle for impact icons */
-    background-color: var(--secondary-color); /* Green icon circle */
+.impact-item .small-circle {
+    background-color: var(--secondary-color);
     width: 70px;
     height: 70px;
-    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0.2); /* Green shadow */
+    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0.2);
 }
 
 .impact-item h3 {
@@ -515,7 +494,6 @@ body {
     color: var(--muted-text);
     line-height: 1.7;
 }
-
 
 /* Contact Section */
 #contact .contact-grid {
@@ -581,7 +559,7 @@ body {
 
 .contact-form .btn {
     width: 100%;
-    border-radius: 8px; /* Slightly less rounded than hero buttons */
+    border-radius: 8px;
 }
 
 .contact-info {
@@ -609,9 +587,12 @@ body {
     margin-bottom: 18px;
     display: flex;
     align-items: center;
+    overflow-wrap: break-word; /* FIX: Prevents long text like emails from overflowing */
+    word-break: break-word;     /* Alternative for better browser support */
 }
 
 .contact-info p i {
+    flex-shrink: 0; /* Prevents the icon from shrinking */
     margin-right: 15px;
     font-size: 1.5rem;
     color: var(--secondary-color);
@@ -632,24 +613,6 @@ body {
     font-size: 1.05rem;
     font-style: italic;
     opacity: 0.9;
-}
-
-.social-links {
-    margin-top: 25px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-links a {
-    color: var(--light-text);
-    font-size: 1.8rem;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.social-links a:hover {
-    color: var(--secondary-color);
-    transform: translateY(-5px);
 }
 
 /* Footer */
@@ -698,56 +661,42 @@ body {
     .section-padding h2 {
         font-size: 2.8rem;
     }
-    #main-header nav ul {
-        margin-left: 20px;
-    }
     .nav-links li {
         margin-left: 25px;
-    }
-    #about .about-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    #about .about-image {
-        order: -1; /* Image appears above text */
-    }
-    .contact-grid {
-        flex-direction: column;
-    }
-    .contact-form-container, .contact-info {
-        min-width: unset;
-        width: 100%;
     }
 }
 
 @media (max-width: 768px) {
     .burger-menu {
         display: block;
+        z-index: 1002; /* Ensure burger is above nav */
     }
     .nav-links {
         position: fixed;
         right: 0;
-        top: 0; /* Adjusted to sit under header if sticky */
+        top: 0;
         height: 100vh;
         width: 60%;
+        max-width: 300px; /* Max width for larger tablets */
         background-color: var(--dark-bg);
         flex-direction: column;
         align-items: center;
+        justify-content: center; /* Center links vertically */
         transform: translateX(100%);
         transition: transform 0.5s ease-in-out;
-        padding-top: 100px;
+        padding-top: 0; /* Remove top padding */
+        z-index: 1001; /* Nav is below burger but above content */
     }
     .nav-links.nav-active {
         transform: translateX(0%);
     }
     .nav-links li {
         opacity: 0;
-        margin: 25px 0;
+        margin: 20px 0;
     }
     .nav-links a {
         font-size: 1.5rem;
     }
-
     .burger-menu.toggle .line1 {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
@@ -757,12 +706,9 @@ body {
     .burger-menu.toggle .line3 {
         transform: rotate(45deg) translate(-5px, -6px);
     }
-
     .hero-section {
         padding: 100px 15px;
-        min-height: 70vh;
     }
-    /* Logo removed, so no site-logo styling needed for now */
     .hero-section h1 {
         font-size: 2.8rem;
     }
@@ -778,20 +724,14 @@ body {
         margin: 0 auto;
     }
     .section-padding {
-        padding: 70px 0;
+        padding: 70px 15px; /* Add horizontal padding */
     }
     .section-padding h2 {
         font-size: 2.2rem;
-        margin-bottom: 40px;
-    }
-    .service-card, .feature-item, .impact-item { /* Updated for impact-item */
-        margin: 0 15px;
     }
     #scrollToTopBtn {
         bottom: 25px;
         right: 25px;
-        padding: 15px;
-        font-size: 18px;
     }
 }
 
@@ -805,22 +745,18 @@ body {
     .hero-section p {
         font-size: 1rem;
     }
-    /* Logo removed, so no site-logo styling needed for now */
     .section-padding h2 {
         font-size: 1.8rem;
     }
-    .service-card h3, .impact-item h3 { /* Updated for impact-item */
+    .service-card h3, .impact-item h3 {
         font-size: 1.6rem;
     }
     .contact-form-container, .contact-info {
         padding: 30px;
     }
-    .contact-form-container h3, .contact-info h3 {
-        font-size: 1.8rem;
-    }
 }
 
-/* Navigation Animation */
+/* Navigation Link Fade-in Animation */
 @keyframes navLinkFade {
     from {
         opacity: 0;
