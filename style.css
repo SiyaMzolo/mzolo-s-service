@@ -496,6 +496,7 @@ body {
 }
 
 /* Contact Section */
+/* Contact Section */
 #contact .contact-grid {
     display: flex;
     flex-wrap: wrap;
@@ -582,20 +583,34 @@ body {
     text-align: center;
 }
 
-.contact-info p {
-    font-size: 1.15rem;
-    margin-bottom: 18px;
+/* --- START: UPDATED STYLES FOR CONTACT DETAILS --- */
+
+.contact-item {
     display: flex;
-    align-items: center;
-    overflow-wrap: break-word; /* FIX: Prevents long text like emails from overflowing */
-    word-break: break-word;     /* Alternative for better browser support */
+    align-items: flex-start; /* Aligns icon to the top of the text block */
+    margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
-.contact-info p i {
-    flex-shrink: 0; /* Prevents the icon from shrinking */
-    margin-right: 15px;
+.contact-item i {
     font-size: 1.5rem;
     color: var(--secondary-color);
+    margin-right: 15px;
+    margin-top: 3px; /* Small adjustment to align with text better */
+}
+
+.details-text {
+    flex: 1; /* Allows this container to take up remaining space */
+}
+
+.details-text strong {
+    margin-right: 8px; /* Adds space between label and value */
+}
+
+.details-text a,
+.details-text span {
+    overflow-wrap: break-word; /* This ensures long text like emails wrap correctly */
+    word-break: break-word;
 }
 
 .contact-info a {
@@ -609,7 +624,7 @@ body {
 }
 
 .contact-tagline {
-    margin-top: 30px;
+    margin-top: 20px;
     font-size: 1.05rem;
     font-style: italic;
     opacity: 0.9;
