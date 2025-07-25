@@ -1,23 +1,41 @@
 document.addEventListener('DOMContentLoaded', () => {
     const header = document.getElementById('main-header');
-    const sections = document.querySelectorAll('main section');
     const navLinks = document.querySelectorAll('.nav-links li a');
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     const currentYearSpan = document.getElementById('current-year');
     const burgerMenu = document.querySelector('.burger-menu');
     const navMenu = document.querySelector('.nav-links');
-    const contactForm = document.getElementById('contactForm'); // Get the contact form
+    const navMenuItems = document.querySelectorAll('.nav-links li');
 
-    // Smooth Scrolling for Navigation Links & Burger Menu toggle
+    // --- MOBILE MENU FUNCTIONALITY ---
+    const navSlide = () => {
+        burgerMenu.addEventListener('click', () => {
+            // Toggle Nav
+            navMenu.classList.toggle('nav-active');
+
+            // Animate Links
+            navMenuItems.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+
+            // Burger Animation
+            burgerMenu.classList.toggle('toggle');
+        });
+    };
+
+    // --- SMOOTH SCROLLING ---
     navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
-            const headerOffset = header.offsetHeight;
-            // Handle cases where targetElement might be null for non-section links
+            
             if (targetElement) {
+                const headerOffset = header.offsetHeight;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -27,114 +45,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Close burger menu if open and remove active class from all links
+            // Close mobile menu after clicking a link
             if (navMenu.classList.contains('nav-active')) {
                 navMenu.classList.remove('nav-active');
                 burgerMenu.classList.remove('toggle');
-                document.body.style.overflow = 'auto'; // Re-enable scrolling
+                navMenuItems.forEach(item => item.style.animation = '');
             }
-            navLinks.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
         });
     });
 
-    // Sticky Header & Active Navigation Link on Scroll
+    // --- SCROLL-RELATED FUNCTIONALITY ---
     window.addEventListener('scroll', () => {
-        // Sticky Header
-        if (window.scrollY > 0) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+        // Sticky Header & Active Link
+        header.classList.toggle('scrolled', window.pageYOffset > 50);
 
-        // Active Navigation Link
+        // Show/Hide Scroll-to-Top Button
+        scrollToTopBtn.style.display = (window.pageYOffset > 300) ? 'block' : 'none';
+
+        // Active Navigation Link on Scroll
         let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - header.offsetHeight; // Adjust for sticky header
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
+        document.querySelectorAll('main section').forEach(section => {
+            const sectionTop = section.offsetTop - header.offsetHeight - 50;
+            if (pageYOffset >= sectionTop) {
+                current = '#' + section.getAttribute('id');
             }
         });
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
+            if (link.getAttribute('href') === current) {
                 link.classList.add('active');
             }
         });
-
-        // Show/Hide Scroll to Top Button
-        if (window.scrollY > 300) {
-            scrollToTopBtn.style.display = 'block';
-        } else {
-            scrollToTopBtn.style.display = 'none';
-        }
     });
 
-    // Scroll to Top Button functionality
+    // --- SCROLL TO TOP BUTTON CLICK ---
     scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Set Current Year in Footer
+    // --- SET CURRENT YEAR IN FOOTER ---
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
-    // Burger Menu Toggle
-    burgerMenu.addEventListener('click', () => {
-        navMenu.classList.toggle('nav-active');
-        burgerMenu.classList.toggle('toggle');
-
-        // Toggle body scroll for mobile menu
-        if (navMenu.classList.contains('nav-active')) {
-            document.body.style.overflow = 'hidden'; // Disable scrolling
-            navLinks.forEach((link, index) => {
-                if (link.style.animation) {
-                    link.style.animation = '';
-                } else {
-                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-                }
-            });
-        } else {
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-            navLinks.forEach(link => {
-                link.style.animation = ''; // Reset animation
-            });
-        }
-    });
-
-    // Contact Form Submission (for Email Client)
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault(); // Prevent default form submission
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const service = document.getElementById('service').value;
-        const message = document.getElementById('message').value;
-
-        const recipientEmail = 'mbuyiswamzolo14@gmail.com'; // Your uncle's email
-        const subject = encodeURIComponent(`Quote Request / Message from ${name}`);
-        let body = `Name: ${name}\n`;
-        body += `Email: ${email}\n`;
-        if (phone) {
-            body += `Phone: ${phone}\n`;
-        }
-        if (service) {
-            body += `Service Interested In: ${service}\n`;
-        }
-        body += `\nMessage:\n${message}`;
-
-        const mailtoLink = `mailto:${recipientEmail}?subject=${subject}&body=${encodeURIComponent(body)}`;
-        
-        window.location.href = mailtoLink; // Open default email client
-
-        alert('Thank you for your message! Your email client should open shortly with your message pre-filled. Please send it from there.');
-        contactForm.reset(); // Clear the form after submission
-    });
+    // --- INITIALIZE ALL FUNCTIONS ---
+    navSlide(); // Call the mobile menu function to activate it.
 });
