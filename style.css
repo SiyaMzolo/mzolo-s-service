@@ -750,7 +750,6 @@ body {
         transform: translateX(0%);
     }
     .nav-links li {
-        opacity: 0;
         margin: 25px 0;
     }
     .nav-links a {
