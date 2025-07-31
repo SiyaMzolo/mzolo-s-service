@@ -40,7 +40,7 @@ body {
 
 /* Header & Navigation */
 #main-header {
-    background: var(--primary-color); /* Updated to primary color */
+    background: var(--primary-color);
     color: var(--light-text);
     padding: 1rem 0;
     position: sticky;
@@ -51,7 +51,7 @@ body {
 }
 
 #main-header.scrolled {
-    background-color: rgba(29, 96, 58, 0.95); /* Updated to primary color */
+    background-color: rgba(29, 96, 58, 0.95);
 }
 
 #main-header .container {
@@ -70,7 +70,7 @@ body {
 }
 
 .logo:hover {
-    color: var(--secondary-color); /* Updated to secondary color */
+    color: var(--secondary-color);
 }
 
 .nav-links {
@@ -96,7 +96,7 @@ body {
     position: absolute;
     width: 0;
     height: 3px;
-    background: var(--accent-color); /* Updated to accent color */
+    background: var(--accent-color);
     bottom: -8px;
     left: 0;
     transition: width 0.3s ease-in-out;
@@ -108,7 +108,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--accent-color); /* Updated to accent color */
+    color: var(--accent-color);
 }
 
 .burger-menu {
@@ -328,21 +328,25 @@ body {
 }
 
 /* Services Section - Creative Shapes */
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+/* Removed previous grid styles and replaced with a slideshow container */
+.service-slideshow-container {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     gap: 40px;
     margin-top: 30px;
+    padding-bottom: 20px; /* Add some space for shadows */
 }
 
 .service-card {
+    min-width: 350px; /* Ensure cards have a fixed width for the slideshow */
     background: var(--light-text);
-    border-radius: 20px 20px 0 0; /* More rounded top */
+    border-radius: 20px 20px 0 0;
     padding: 35px;
     text-align: center;
     box-shadow: var(--box-shadow-light);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 5px solid var(--accent-color); /* Updated border color to accent */
+    border-bottom: 5px solid var(--accent-color);
     position: relative;
     overflow: hidden;
 }
@@ -378,15 +382,15 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 auto 25px auto;
-    box-shadow: 0 0 0 10px rgba(29, 96, 58, 0.2); /* Updated shadow color */
+    box-shadow: 0 0 0 10px rgba(29, 96, 58, 0.2);
     transition: background-color 0.3s ease;
     position: relative;
     z-index: 1;
 }
 
 .service-card:hover .icon-circle {
-    background-color: var(--accent-color); /* Updated to accent color */
-    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2); /* Updated shadow color */
+    background-color: var(--accent-color);
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2);
 }
 
 .service-card .service-icon {
@@ -411,19 +415,23 @@ body {
     z-index: 1;
 }
 
-/* Why Choose Us Section */
+/* Why Choose Us Section - Animated Slideshow */
 #why-choose-us {
-    background-color: #f0f8f0; /* A very light green */
+    background-color: #f0f8f0;
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* Updated features grid to be a slideshow container */
+.features-slideshow-container {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
     gap: 30px;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .feature-item {
+    min-width: 280px; /* Fixed width for slideshow */
     background: var(--light-text);
     padding: 30px;
     border-radius: 12px;
@@ -453,7 +461,7 @@ body {
     font-size: 1rem;
 }
 
-/* Community Impact Section - Creative Shapes */
+/* Community Impact Section */
 #community-impact {
     text-align: center;
 }
@@ -481,12 +489,12 @@ body {
 
 .impact-item {
     background: var(--light-text);
-    border-radius: 20px 20px 0 0; /* More rounded top */
+    border-radius: 20px 20px 0 0;
     padding: 35px;
     text-align: center;
     box-shadow: var(--box-shadow-light);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 5px solid var(--primary-color); /* Updated border color to primary */
+    border-bottom: 5px solid var(--primary-color);
 }
 
 .impact-item:hover {
@@ -495,7 +503,7 @@ body {
 }
 
 .impact-item .small-circle { 
-    background-color: var(--accent-color); /* Updated icon circle to accent */
+    background-color: var(--accent-color);
     width: 70px;
     height: 70px;
     box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2);
@@ -514,7 +522,7 @@ body {
     line-height: 1.7;
 }
 
-/* Contact Section - Creative Shapes */
+/* Contact Section */
 #contact .contact-grid {
     display: flex;
     flex-wrap: wrap;
@@ -584,8 +592,8 @@ body {
 .contact-info {
     flex: 1;
     min-width: 300px;
-    background: var(--primary-color); /* Updated background to primary color */
-    color: var(--light-text); /* Changed text color to light */
+    background: var(--primary-color);
+    color: var(--light-text);
     padding: 40px;
     border-radius: 15px;
     box-shadow: var(--box-shadow-light);
@@ -599,7 +607,7 @@ body {
     font-size: 2.2rem;
     margin-bottom: 30px;
     text-align: center;
-    color: var(--light-text); /* Ensure the heading is light */
+    color: var(--light-text);
 }
 
 .contact-info p {
@@ -607,13 +615,13 @@ body {
     margin-bottom: 18px;
     display: flex;
     align-items: center;
-    color: var(--light-text); /* Ensure the paragraphs are light */
+    color: var(--light-text);
 }
 
 .contact-info p i {
     margin-right: 15px;
     font-size: 1.5rem;
-    color: var(--secondary-color); /* Updated icon color to secondary */
+    color: var(--secondary-color);
 }
 
 .contact-info a {
@@ -623,7 +631,8 @@ body {
 }
 
 .contact-info a:hover {
-    color: var(--secondary-color); /* Updated hover color */
+    color: var(--secondary-color);
+    transform: translateY(-5px);
 }
 
 .contact-tagline {
@@ -631,7 +640,7 @@ body {
     font-size: 1.05rem;
     font-style: italic;
     opacity: 0.9;
-    color: var(--light-text); /* Ensure the tagline is light */
+    color: var(--light-text);
 }
 
 .social-links {
@@ -642,15 +651,16 @@ body {
 }
 
 .social-links a {
-    color: var(--light-text); /* Updated social link color to light */
+    color: var(--light-text);
     font-size: 1.8rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--secondary-color); /* Updated hover color */
+    color: var(--secondary-color);
     transform: translateY(-5px);
 }
+
 /* Footer */
 #main-footer {
     background: var(--dark-bg);
@@ -670,7 +680,7 @@ body {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: var(--primary-color); /* Updated to primary color */
+    background-color: var(--primary-color);
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -708,7 +718,7 @@ body {
         text-align: center;
     }
     #about .about-image {
-        order: -1; 
+        order: -1;
     }
     .contact-grid {
         flex-direction: column;
@@ -726,10 +736,10 @@ body {
     .nav-links {
         position: fixed;
         right: 0;
-        top: 0; 
+        top: 0;
         height: 100vh;
         width: 60%;
-        background-color: var(--primary-color); /* Updated to primary color */
+        background-color: var(--primary-color);
         flex-direction: column;
         align-items: center;
         transform: translateX(100%);
@@ -782,7 +792,7 @@ body {
         font-size: 2.2rem;
         margin-bottom: 40px;
     }
-    .service-card, .feature-item, .impact-item { 
+    .service-card, .feature-item, .impact-item {
         margin: 0 15px;
     }
     #scrollToTopBtn {
@@ -790,6 +800,10 @@ body {
         right: 25px;
         padding: 15px;
         font-size: 18px;
+    }
+    /* Updated slideshow cards for mobile view */
+    .service-card, .feature-item {
+        min-width: 80%;
     }
 }
 
@@ -806,7 +820,7 @@ body {
     .section-padding h2 {
         font-size: 1.8rem;
     }
-    .service-card h3, .impact-item h3 { 
+    .service-card h3, .impact-item h3 {
         font-size: 1.6rem;
     }
     .contact-form-container, .contact-info {
