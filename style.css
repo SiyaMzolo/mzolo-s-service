@@ -587,8 +587,8 @@ body {
 .contact-info {
     flex: 1;
     min-width: 300px;
-    background: var(--primary-color);
-    color: var(--light-text);
+    background: #f0f0f0; /* Changed background to a light grey */
+    color: var(--dark-text); /* Changed text color to a dark color for contrast */
     padding: 40px;
     border-radius: 15px;
     box-shadow: var(--box-shadow-light);
@@ -602,6 +602,7 @@ body {
     font-size: 2.2rem;
     margin-bottom: 30px;
     text-align: center;
+    color: var(--dark-text); /* Ensure the heading is dark and readable */
 }
 
 .contact-info p {
@@ -609,22 +610,23 @@ body {
     margin-bottom: 18px;
     display: flex;
     align-items: center;
+    color: var(--dark-text); /* Ensure the paragraphs are dark and readable */
 }
 
 .contact-info p i {
     margin-right: 15px;
     font-size: 1.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color); /* Changed icon color for visibility */
 }
 
 .contact-info a {
-    color: var(--light-text);
+    color: var(--dark-text); /* Changed link color to a dark color */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color); /* Hover color for links */
 }
 
 .contact-tagline {
@@ -632,6 +634,7 @@ body {
     font-size: 1.05rem;
     font-style: italic;
     opacity: 0.9;
+    color: var(--dark-text); /* Ensure the tagline is dark and readable */
 }
 
 .social-links {
@@ -642,16 +645,15 @@ body {
 }
 
 .social-links a {
-    color: var(--light-text);
+    color: var(--dark-text); /* Changed social link color to a dark color */
     font-size: 1.8rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color); /* Hover color for social links */
     transform: translateY(-5px);
 }
-
 /* Footer */
 #main-footer {
     background: var(--dark-bg);
