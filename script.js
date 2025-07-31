@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const burgerMenu = document.querySelector('.burger-menu');
     const navMenu = document.querySelector('.nav-links');
 
+    // Slideshow elements
+    const serviceSlideshow = document.querySelector('.service-slideshow-container');
+    const featuresSlideshow = document.querySelector('.features-slideshow-container');
+
+    const slideshows = [serviceSlideshow, featuresSlideshow];
+
     // Smooth Scrolling & Active Nav Link
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
@@ -91,6 +97,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
             }
         });
+    });
+
+    // Slideshow Functionality
+    slideshows.forEach(slideshow => {
+        if (slideshow) {
+            const cards = slideshow.querySelectorAll(':scope > div');
+            let currentCardIndex = 0;
+            
+            setInterval(() => {
+                // Move to the next card, or loop back to the beginning
+                currentCardIndex = (currentCardIndex + 1) % cards.length;
+                const scrollAmount = cards[currentCardIndex].offsetLeft - slideshow.offsetLeft;
+                
+                slideshow.scrollTo({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            }, 3000); // Change card every 3 seconds
+        }
     });
 
     // Set current year in footer
