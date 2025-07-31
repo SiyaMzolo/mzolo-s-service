@@ -1,12 +1,13 @@
 /* General Body & HTML Reset */
 :root {
-    --primary-color: #007bff; /* A vibrant blue */
-    --secondary-color: #28a745; /* A fresh green for accents */
+    --primary-color: #1d603a; /* Deep Green from the logo */
+    --secondary-color: #a7b1b3; /* Metallic Silver/Grey from the logo */
+    --accent-color: #007bff; /* A vibrant blue for subtle accents */
     --dark-text: #333333;
     --light-text: #ffffff;
     --muted-text: #6c757d;
-    --light-bg: #f8f9fa; /* Lighter background */
-    --dark-bg: #212529; /* Darker background for header/footer */
+    --light-bg: #f8f9fa; 
+    --dark-bg: #212529; 
     --border-color: #e9ecef;
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Open Sans', sans-serif;
@@ -39,7 +40,7 @@ body {
 
 /* Header & Navigation */
 #main-header {
-    background: var(--dark-bg);
+    background: var(--primary-color); /* Updated to primary color */
     color: var(--light-text);
     padding: 1rem 0;
     position: sticky;
@@ -50,7 +51,7 @@ body {
 }
 
 #main-header.scrolled {
-    background-color: rgba(33, 37, 41, 0.95);
+    background-color: rgba(29, 96, 58, 0.95); /* Updated to primary color */
 }
 
 #main-header .container {
@@ -69,7 +70,7 @@ body {
 }
 
 .logo:hover {
-    color: var(--primary-color);
+    color: var(--secondary-color); /* Updated to secondary color */
 }
 
 .nav-links {
@@ -95,7 +96,7 @@ body {
     position: absolute;
     width: 0;
     height: 3px;
-    background: var(--primary-color);
+    background: var(--accent-color); /* Updated to accent color */
     bottom: -8px;
     left: 0;
     transition: width 0.3s ease-in-out;
@@ -107,7 +108,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: var(--accent-color); /* Updated to accent color */
 }
 
 .burger-menu {
@@ -125,7 +126,7 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(0, 123, 255, 0.75), rgba(0, 123, 255, 0.75)), url('hero-mzolo-services-new.jpg') no-repeat center center/cover; /* New hero image */
+    background: linear-gradient(rgba(29, 96, 58, 0.8), rgba(29, 96, 58, 0.8)), url('hero-mzolo-services-new.jpg') no-repeat center center/cover;
     color: var(--light-text);
     text-align: center;
     padding: 150px 20px;
@@ -134,7 +135,7 @@ body {
     justify-content: center;
     min-height: 85vh;
     position: relative;
-    overflow: hidden; /* To contain pseudo-elements */
+    overflow: hidden;
 }
 
 .hero-section::before {
@@ -172,10 +173,8 @@ body {
 
 .hero-content {
     max-width: 900px;
-    z-index: 1; /* Ensure content is above pseudo-elements */
+    z-index: 1; 
 }
-
-/* Logo removed: .site-logo { ... } */
 
 .hero-section h1 {
     font-family: var(--heading-font);
@@ -206,7 +205,7 @@ body {
     display: inline-block;
     padding: 16px 40px;
     text-decoration: none;
-    border-radius: 50px; /* More rounded buttons */
+    border-radius: 50px;
     font-weight: 600;
     font-size: 1.2rem;
     transition: all 0.3s ease;
@@ -240,7 +239,7 @@ body {
 }
 
 .primary-btn:hover {
-    background-color: #0069d9;
+    background-color: #1a5132;
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
@@ -269,7 +268,7 @@ body {
     margin-bottom: 60px;
     color: var(--dark-text);
     position: relative;
-    display: inline-block; /* To center the pseudo-element better */
+    display: inline-block;
     left: 50%;
     transform: translateX(-50%);
     padding-bottom: 20px;
@@ -328,7 +327,7 @@ body {
     transform: scale(1.02);
 }
 
-/* Services Section */
+/* Services Section - Creative Shapes */
 .service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -338,12 +337,12 @@ body {
 
 .service-card {
     background: var(--light-text);
-    border-radius: 15px;
+    border-radius: 20px 20px 0 0; /* More rounded top */
     padding: 35px;
     text-align: center;
     box-shadow: var(--box-shadow-light);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 5px solid var(--primary-color);
+    border-bottom: 5px solid var(--accent-color); /* Updated border color to accent */
     position: relative;
     overflow: hidden;
 }
@@ -379,15 +378,15 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 auto 25px auto;
-    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 0 0 10px rgba(29, 96, 58, 0.2); /* Updated shadow color */
     transition: background-color 0.3s ease;
     position: relative;
     z-index: 1;
 }
 
 .service-card:hover .icon-circle {
-    background-color: var(--secondary-color);
-    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0.2);
+    background-color: var(--accent-color); /* Updated to accent color */
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2); /* Updated shadow color */
 }
 
 .service-card .service-icon {
@@ -414,7 +413,7 @@ body {
 
 /* Why Choose Us Section */
 #why-choose-us {
-    background-color: #e2f0ff; /* A very light blue */
+    background-color: #f0f8f0; /* A very light green */
 }
 
 .features-grid {
@@ -454,9 +453,8 @@ body {
     font-size: 1rem;
 }
 
-/* Community Impact Section (Replaces Gallery) */
+/* Community Impact Section - Creative Shapes */
 #community-impact {
-    /* Uses .bg-light from general styles */
     text-align: center;
 }
 
@@ -483,12 +481,12 @@ body {
 
 .impact-item {
     background: var(--light-text);
-    border-radius: 15px;
+    border-radius: 20px 20px 0 0; /* More rounded top */
     padding: 35px;
     text-align: center;
     box-shadow: var(--box-shadow-light);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border-bottom: 5px solid var(--secondary-color); /* Green border for impact */
+    border-bottom: 5px solid var(--primary-color); /* Updated border color to primary */
 }
 
 .impact-item:hover {
@@ -496,11 +494,11 @@ body {
     box-shadow: var(--box-shadow-medium);
 }
 
-.impact-item .small-circle { /* Smaller circle for impact icons */
-    background-color: var(--secondary-color); /* Green icon circle */
+.impact-item .small-circle { 
+    background-color: var(--accent-color); /* Updated icon circle to accent */
     width: 70px;
     height: 70px;
-    box-shadow: 0 0 0 10px rgba(40, 167, 69, 0.2); /* Green shadow */
+    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2);
 }
 
 .impact-item h3 {
@@ -516,8 +514,7 @@ body {
     line-height: 1.7;
 }
 
-
-/* Contact Section */
+/* Contact Section - Creative Shapes */
 #contact .contact-grid {
     display: flex;
     flex-wrap: wrap;
@@ -571,7 +568,7 @@ body {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 3px rgba(29, 96, 58, 0.25);
 }
 
 .contact-form textarea {
@@ -581,14 +578,14 @@ body {
 
 .contact-form .btn {
     width: 100%;
-    border-radius: 8px; /* Slightly less rounded than hero buttons */
+    border-radius: 8px;
 }
 
 .contact-info {
     flex: 1;
     min-width: 300px;
-    background: #f0f0f0; /* Changed background to a light grey */
-    color: var(--dark-text); /* Changed text color to a dark color for contrast */
+    background: var(--primary-color); /* Updated background to primary color */
+    color: var(--light-text); /* Changed text color to light */
     padding: 40px;
     border-radius: 15px;
     box-shadow: var(--box-shadow-light);
@@ -602,7 +599,7 @@ body {
     font-size: 2.2rem;
     margin-bottom: 30px;
     text-align: center;
-    color: var(--dark-text); /* Ensure the heading is dark and readable */
+    color: var(--light-text); /* Ensure the heading is light */
 }
 
 .contact-info p {
@@ -610,23 +607,23 @@ body {
     margin-bottom: 18px;
     display: flex;
     align-items: center;
-    color: var(--dark-text); /* Ensure the paragraphs are dark and readable */
+    color: var(--light-text); /* Ensure the paragraphs are light */
 }
 
 .contact-info p i {
     margin-right: 15px;
     font-size: 1.5rem;
-    color: var(--primary-color); /* Changed icon color for visibility */
+    color: var(--secondary-color); /* Updated icon color to secondary */
 }
 
 .contact-info a {
-    color: var(--dark-text); /* Changed link color to a dark color */
+    color: var(--light-text); 
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-    color: var(--primary-color); /* Hover color for links */
+    color: var(--secondary-color); /* Updated hover color */
 }
 
 .contact-tagline {
@@ -634,7 +631,7 @@ body {
     font-size: 1.05rem;
     font-style: italic;
     opacity: 0.9;
-    color: var(--dark-text); /* Ensure the tagline is dark and readable */
+    color: var(--light-text); /* Ensure the tagline is light */
 }
 
 .social-links {
@@ -645,13 +642,13 @@ body {
 }
 
 .social-links a {
-    color: var(--dark-text); /* Changed social link color to a dark color */
+    color: var(--light-text); /* Updated social link color to light */
     font-size: 1.8rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: var(--primary-color); /* Hover color for social links */
+    color: var(--secondary-color); /* Updated hover color */
     transform: translateY(-5px);
 }
 /* Footer */
@@ -673,7 +670,7 @@ body {
     z-index: 99;
     border: none;
     outline: none;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color); /* Updated to primary color */
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -684,7 +681,7 @@ body {
 }
 
 #scrollToTopBtn:hover {
-    background-color: #218838;
+    background-color: #1a5132;
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
@@ -711,7 +708,7 @@ body {
         text-align: center;
     }
     #about .about-image {
-        order: -1; /* Image appears above text */
+        order: -1; 
     }
     .contact-grid {
         flex-direction: column;
@@ -729,10 +726,10 @@ body {
     .nav-links {
         position: fixed;
         right: 0;
-        top: 0; /* Adjusted to sit under header if sticky */
+        top: 0; 
         height: 100vh;
         width: 60%;
-        background-color: var(--dark-bg);
+        background-color: var(--primary-color); /* Updated to primary color */
         flex-direction: column;
         align-items: center;
         transform: translateX(100%);
@@ -764,7 +761,6 @@ body {
         padding: 100px 15px;
         min-height: 70vh;
     }
-    /* Logo removed, so no site-logo styling needed for now */
     .hero-section h1 {
         font-size: 2.8rem;
     }
@@ -786,7 +782,7 @@ body {
         font-size: 2.2rem;
         margin-bottom: 40px;
     }
-    .service-card, .feature-item, .impact-item { /* Updated for impact-item */
+    .service-card, .feature-item, .impact-item { 
         margin: 0 15px;
     }
     #scrollToTopBtn {
@@ -807,11 +803,10 @@ body {
     .hero-section p {
         font-size: 1rem;
     }
-    /* Logo removed, so no site-logo styling needed for now */
     .section-padding h2 {
         font-size: 1.8rem;
     }
-    .service-card h3, .impact-item h3 { /* Updated for impact-item */
+    .service-card h3, .impact-item h3 { 
         font-size: 1.6rem;
     }
     .contact-form-container, .contact-info {
