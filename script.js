@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.innerWidth <= 768) {
                     navMenu.classList.remove('nav-active');
                     burgerMenu.classList.remove('toggle');
-                    navLinks.forEach((item, index) => {
-                        item.style.animation = ''; // Reset animation
+                    // Reset animation for next time
+                    document.querySelectorAll('.nav-links li').forEach(item => {
+                        item.style.animation = ''; 
                     });
                 }
             }
@@ -90,11 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
         burgerMenu.classList.toggle('toggle');
 
         // Animate links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
+        document.querySelectorAll('.nav-links li').forEach((link, index) => {
+            if (navMenu.classList.contains('nav-active')) {
                 link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            } else {
+                link.style.animation = ''; // Reset animation to close
             }
         });
     });
