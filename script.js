@@ -1,46 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const header = document.getElementById('main-header');
-
     const navLinks = document.querySelectorAll('.nav-links li a');
-
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-
     const currentYearSpan = document.getElementById('current-year');
-
     const burgerMenu = document.querySelector('.burger-menu');
-
     const navMenu = document.querySelector('.nav-links');
-
     const navMenuItems = document.querySelectorAll('.nav-links li');
 
-
-
     // --- MOBILE MENU FUNCTIONALITY ---
-
     const navSlide = () => {
-
         burgerMenu.addEventListener('click', () => {
-
             // Toggle Nav
-
             navMenu.classList.toggle('nav-active');
 
-
-
             // Animate Links
-
             navMenuItems.forEach((link, index) => {
-
                 if (link.style.animation) {
-
                     link.style.animation = '';
-
                 } else {
-
                     link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-
-                }.toggle('toggle');
+                }
+            });
+            // Burger Animation
+            burgerMenu.classList.toggle('toggle');
         });
     };
 
