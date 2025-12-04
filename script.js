@@ -7,12 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const burgerMenu = document.querySelector('.burger-menu');
     const navMenu = document.querySelector('.nav-links');
 
-    // Slideshow elements
-    const serviceSlideshow = document.querySelector('.service-slideshow-container');
-    const featuresSlideshow = document.querySelector('.features-slideshow-container');
-
-    const slideshows = [serviceSlideshow, featuresSlideshow];
-
     // Smooth Scrolling & Active Nav Link
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
@@ -37,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     burgerMenu.classList.remove('toggle');
                     // Reset animation for next time
                     document.querySelectorAll('.nav-links li').forEach(item => {
-                        item.style.animation = ''; 
+                        item.style.animation = '';
                     });
                 }
             }
@@ -54,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - header.offsetHeight;
+            // Add a buffer (e.g., 150px) so the link highlights before the section hits the very top
+            const scrollBuffer = 150; 
+            const sectionTop = section.offsetTop - header.offsetHeight - scrollBuffer;
             const sectionHeight = section.clientHeight;
             if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
                 current = section.getAttribute('id');
@@ -63,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
+            // Check if the link's href matches the current section's id
+            if (link.getAttribute('href').includes(`#${current}`)) {
                 link.classList.add('active');
             }
         });
@@ -100,25 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Slideshow Functionality
-    slideshows.forEach(slideshow => {
-        if (slideshow) {
-            const cards = slideshow.querySelectorAll(':scope > div');
-            let currentCardIndex = 0;
-            
-            setInterval(() => {
-                // Move to the next card, or loop back to the beginning
-                currentCardIndex = (currentCardIndex + 1) % cards.length;
-                const scrollAmount = cards[currentCardIndex].offsetLeft - slideshow.offsetLeft;
-                
-                slideshow.scrollTo({
-                    left: scrollAmount,
-                    behavior: 'smooth'
-                });
-            }, 3000); // Change card every 3 seconds
-        }
-    });
-
     // Set current year in footer
-    currentYearSpan.textContent = new Date().getFullYear();
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
 });
