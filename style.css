@@ -1,13 +1,13 @@
 /* General Body & HTML Reset */
 :root {
-    --primary-color: #1d603a; /* Deep Green from the logo */
+    --primary-color: #3A5795; /* NEW: Classic, professional blue */
     --secondary-color: #a7b1b3; /* Metallic Silver/Grey from the logo */
-    --accent-color: #007bff; /* A vibrant blue for subtle accents */
+    --accent-color: #FCA311; /* NEW: Vibrant gold/orange for accents */
     --dark-text: #333333;
     --light-text: #ffffff;
     --muted-text: #6c757d;
-    --light-bg: #f8f9fa; 
-    --dark-bg: #212529; 
+    --light-bg: #f8f9fa;
+    --dark-bg: #212529;
     --border-color: #e9ecef;
     --heading-font: 'Montserrat', sans-serif;
     --body-font: 'Open Sans', sans-serif;
@@ -32,6 +32,17 @@ body {
     background-color: var(--light-bg);
 }
 
+/* NEW: Modern Focus Styles for Accessibility & Interaction */
+:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -51,7 +62,7 @@ body {
 }
 
 #main-header.scrolled {
-    background-color: rgba(29, 96, 58, 0.95);
+    background-color: rgba(58, 87, 149, 0.95);
 }
 
 #main-header .container {
@@ -60,17 +71,21 @@ body {
     align-items: center;
 }
 
+/* MODIFIED: Handling the logo as an image now */
 .logo {
-    font-family: var(--heading-font);
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: var(--light-text);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: opacity 0.3s ease;
+    display: inline-block;
+}
+
+.logo img {
+    height: auto;
+    width: 120px; /* Adjust size as needed */
+    vertical-align: middle;
 }
 
 .logo:hover {
-    color: var(--secondary-color);
+    opacity: 0.8;
 }
 
 .nav-links {
@@ -102,12 +117,12 @@ body {
     transition: width 0.3s ease-in-out;
 }
 
-.nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--accent-color);
 }
 
@@ -126,7 +141,8 @@ body {
 
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(rgba(29, 96, 58, 0.8), rgba(29, 96, 58, 0.8)), url('hero-mzolo-services-new.jpg') no-repeat center center/cover;
+    /* UPDATED: Hard-coded gradient to new primary color */
+    background: linear-gradient(rgba(58, 87, 149, 0.8), rgba(58, 87, 149, 0.8)), url('hero-mzolo-services-new.jpg') no-repeat center center/cover;
     color: var(--light-text);
     text-align: center;
     padding: 150px 20px;
@@ -170,10 +186,9 @@ body {
     100% { transform: translate(0, 0); }
 }
 
-
 .hero-content {
     max-width: 900px;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .hero-section h1 {
@@ -239,7 +254,7 @@ body {
 }
 
 .primary-btn:hover {
-    background-color: #1a5132;
+    background-color: #2c4274; /* UPDATED: Darker blue for hover */
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
@@ -327,19 +342,32 @@ body {
     transform: scale(1.02);
 }
 
-/* Services Section - Creative Shapes */
-/* Removed previous grid styles and replaced with a slideshow container */
+/* Services Section - NOW A CSS SCROLL-SNAP CONTAINER */
 .service-slideshow-container {
     display: flex;
-    overflow-x: hidden;
+    overflow-x: auto; /* NEW: Allow user horizontal scroll */
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* NEW: Enable scroll snapping */
     gap: 40px;
     margin-top: 30px;
-    padding-bottom: 20px; /* Add some space for shadows */
+    padding: 0 20px 20px 20px; /* Add padding for shadows and snapping */
 }
 
+/* MODIFIED: Scrollbar hiding for a cleaner look */
+.service-slideshow-container::-webkit-scrollbar,
+.features-slideshow-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.service-slideshow-container,
+.features-slideshow-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+/* END MODIFIED */
+
+
 .service-card {
-    min-width: 350px; /* Ensure cards have a fixed width for the slideshow */
+    min-width: 350px;
     background: var(--light-text);
     border-radius: 20px 20px 0 0;
     padding: 35px;
@@ -349,6 +377,7 @@ body {
     border-bottom: 5px solid var(--accent-color);
     position: relative;
     overflow: hidden;
+    scroll-snap-align: center; /* NEW: Snap items to the center */
 }
 
 .service-card::before {
@@ -382,7 +411,8 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0 auto 25px auto;
-    box-shadow: 0 0 0 10px rgba(29, 96, 58, 0.2);
+    /* UPDATED: Hard-coded shadow color */
+    box-shadow: 0 0 0 10px rgba(58, 87, 149, 0.2);
     transition: background-color 0.3s ease;
     position: relative;
     z-index: 1;
@@ -390,7 +420,8 @@ body {
 
 .service-card:hover .icon-circle {
     background-color: var(--accent-color);
-    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2);
+    /* UPDATED: Use accent color for hover shadow */
+    box-shadow: 0 0 0 10px rgba(252, 163, 17, 0.2);
 }
 
 .service-card .service-icon {
@@ -417,17 +448,18 @@ body {
 
 /* Why Choose Us Section - Animated Slideshow */
 #why-choose-us {
-    background-color: #f0f8f0;
+    background-color: #f0f2f8; /* UPDATED: Light blue tint */
 }
 
 /* Updated features grid to be a slideshow container */
 .features-slideshow-container {
     display: flex;
-    overflow-x: hidden;
+    overflow-x: auto; /* NEW: Allow user horizontal scroll */
     scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* NEW: Enable scroll snapping */
     gap: 30px;
     text-align: center;
-    padding-bottom: 20px;
+    padding: 0 20px 20px 20px; /* Add padding for shadows and snapping */
 }
 
 .feature-item {
@@ -437,6 +469,7 @@ body {
     border-radius: 12px;
     box-shadow: var(--box-shadow-light);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    scroll-snap-align: center; /* NEW: Snap items to the center */
 }
 
 .feature-item:hover {
@@ -502,12 +535,26 @@ body {
     box-shadow: var(--box-shadow-medium);
 }
 
-.impact-item .small-circle { 
+/* MODIFIED: Combining icon-circle with small-circle for correct size/shadow */
+.impact-item .small-circle {
     background-color: var(--accent-color);
     width: 70px;
     height: 70px;
-    box-shadow: 0 0 0 10px rgba(0, 123, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 25px auto;
+    /* UPDATED: Hard-coded shadow color */
+    box-shadow: 0 0 0 10px rgba(252, 163, 17, 0.2);
+    transition: background-color 0.3s ease;
 }
+
+.impact-item .small-circle i {
+    font-size: 2.8rem; /* Adjusted for smaller circle */
+    color: var(--light-text);
+}
+/* END MODIFIED */
 
 .impact-item h3 {
     font-family: var(--heading-font);
@@ -595,7 +642,7 @@ body {
     padding: 12px;
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    background-color: #f0f8f0; /* Light green tint */
+    background-color: #f0f2f8; /* UPDATED: Light blue tint */
 }
 
 .contact-link:hover {
@@ -690,7 +737,7 @@ body {
 }
 
 #scrollToTopBtn:hover {
-    background-color: #1a5132;
+    background-color: #2c4274; /* UPDATED: Darker blue for hover */
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
@@ -719,13 +766,11 @@ body {
     #about .about-image {
         order: -1;
     }
-    .contact-grid {
+    /* FIX: contact-grid was missing from CSS. Using contact-grid-wrapper instead. */
+    .contact-grid-wrapper {
         flex-direction: column;
     }
-    .contact-form-container, .contact-info {
-        min-width: unset;
-        width: 100%;
-    }
+    /* REMOVED: contact-form-container and contact-info classes not in HTML */
 }
 
 @media (max-width: 768px) {
@@ -806,8 +851,8 @@ body {
 }
 
 @media (max-width: 480px) {
-    .logo {
-        font-size: 1.8rem;
+    .logo img {
+        width: 100px; /* Smaller logo on small screens */
     }
     .hero-section h1 {
         font-size: 2.2rem;
@@ -821,12 +866,7 @@ body {
     .service-card h3, .impact-item h3 {
         font-size: 1.6rem;
     }
-    .contact-form-container, .contact-info {
-        padding: 30px;
-    }
-    .contact-form-container h3, .contact-info h3 {
-        font-size: 1.8rem;
-    }
+    /* REMOVED: contact-form-container and contact-info classes not in HTML */
 }
 
 /* Navigation Animation */
@@ -840,4 +880,3 @@ body {
         transform: translateX(0px);
     }
 }
-
